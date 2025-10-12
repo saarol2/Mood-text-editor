@@ -32,6 +32,45 @@
 	100% { opacity: 0.7; filter: blur(0.7vw); }
 }
 
+/* FOCUSED MOOD: golden background with upward wave animation */
+.mood-focused-bg {
+	background: #ffe066 !important;
+	transition: background 0.7s;
+	position: relative;
+	z-index: 0;
+}
+
+.mood-focused-bg::before {
+	content: '';
+	position: fixed;
+	z-index: -1;
+	top: 0; left: 0; right: 0; bottom: 0;
+	pointer-events: none;
+	background:
+		repeating-linear-gradient(
+			0deg,
+			transparent 0%,
+			#fff2a8 25%,
+			#ffeb85 50%,
+			#fff2a8 75%,
+			transparent 100%
+		);
+	opacity: 0.95;
+	animation: focused-upward-waves 1.4s linear infinite;
+	background-size: 100% 200vh;
+	background-position: 0 100vh;
+	transition: opacity 0.4s;
+}
+
+@keyframes focused-upward-waves {
+	0% { 
+		background-position: 0 100vh;
+	}
+	100% { 
+		background-position: 0 -100vh;
+	}
+}
+
 body {
 	background: #181c22;
 	font-family: 'Segoe UI', 'Arial', sans-serif;

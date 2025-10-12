@@ -8,11 +8,17 @@ export default function App() {
   useEffect(() => {
     if (mood === 'calm') {
       document.body.classList.add('mood-calm-bg')
+      document.body.classList.remove('mood-focused-bg')
+    } else if (mood === 'focused') {
+      document.body.classList.add('mood-focused-bg')
+      document.body.classList.remove('mood-calm-bg')
     } else {
       document.body.classList.remove('mood-calm-bg')
+      document.body.classList.remove('mood-focused-bg')
     }
     return () => {
       document.body.classList.remove('mood-calm-bg')
+      document.body.classList.remove('mood-focused-bg')
     }
   }, [mood])
 
