@@ -12,13 +12,20 @@ export default function App() {
     } else if (mood === 'focused') {
       document.body.classList.add('mood-focused-bg')
       document.body.classList.remove('mood-calm-bg')
+      document.body.classList.remove('mood-frustrated-bg')
+    } else if (mood === 'frustrated') {
+      document.body.classList.add('mood-frustrated-bg')
+      document.body.classList.remove('mood-calm-bg')
+      document.body.classList.remove('mood-focused-bg')
     } else {
       document.body.classList.remove('mood-calm-bg')
       document.body.classList.remove('mood-focused-bg')
+      document.body.classList.remove('mood-frustrated-bg')
     }
     return () => {
       document.body.classList.remove('mood-calm-bg')
       document.body.classList.remove('mood-focused-bg')
+      document.body.classList.remove('mood-frustrated-bg')
     }
   }, [mood])
 

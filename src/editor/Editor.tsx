@@ -14,7 +14,7 @@ export default function Editor({ mood }: { mood: string }) {
 
   return (
     <div className={`editor mood-${mood}`}>
-      <div className="controls">Moodi: <strong>{mood}</strong></div>
+      <div className="controls">Mood: <strong>{mood}</strong></div>
       <textarea ref={ref} placeholder="Kirjoita..." />
     </div>
   )
