@@ -17,15 +17,23 @@ export default function App() {
       document.body.classList.add('mood-frustrated-bg')
       document.body.classList.remove('mood-calm-bg')
       document.body.classList.remove('mood-focused-bg')
+      document.body.classList.remove('mood-uncertain-bg')
+    } else if (mood === 'uncertain') {
+      document.body.classList.add('mood-uncertain-bg')
+      document.body.classList.remove('mood-calm-bg')
+      document.body.classList.remove('mood-focused-bg')
+      document.body.classList.remove('mood-frustrated-bg')
     } else {
       document.body.classList.remove('mood-calm-bg')
       document.body.classList.remove('mood-focused-bg')
       document.body.classList.remove('mood-frustrated-bg')
+      document.body.classList.remove('mood-uncertain-bg')
     }
     return () => {
       document.body.classList.remove('mood-calm-bg')
       document.body.classList.remove('mood-focused-bg')
       document.body.classList.remove('mood-frustrated-bg')
+      document.body.classList.remove('mood-uncertain-bg')
     }
   }, [mood])
 
