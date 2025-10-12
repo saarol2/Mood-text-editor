@@ -111,6 +111,27 @@
 	100% { transform: translateX(-15px) rotate(-0.5deg); }
 }
 
+/* STRESSED MOOD: purple background, heartbeat pulse */
+.mood-stressed-bg {
+	background: #6a1b9a !important;
+	transition: background 0.7s;
+}
+
+.mood-stressed {
+	animation: stressed-heartbeat 1.25s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes stressed-heartbeat {
+	0%   { transform: scale(1) rotate(0deg); }
+	10%  { transform: scale(1.018) rotate(0.04deg); }
+	18%  { transform: scale(0.992) rotate(-0.02deg); }
+	22%  { transform: scale(1.032) rotate(0.06deg); } /* 2nd, bigger beat */
+	30%  { transform: scale(0.99) rotate(-0.03deg); }
+	38%  { transform: scale(1.012) rotate(0.03deg); }
+	46%  { transform: scale(1) rotate(0deg); }
+	100% { transform: scale(1) rotate(0deg); }
+}
+
 body {
 	background: #181c22;
 	font-family: 'Segoe UI', 'Arial', sans-serif;
