@@ -1,0 +1,70 @@
+
+body {
+	background: #f6f7fa;
+	font-family: 'Segoe UI', 'Arial', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+.editor {
+	max-width: 950px;
+	margin: 48px auto 0 auto;
+	background: #fff;
+	border-radius: 14px;
+	box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+	padding: 32px 38px 28px 38px;
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+
+.editor .controls {
+	font-size: 1.1rem;
+	color: #444;
+	margin-bottom: 8px;
+}
+
+
+.editor textarea {
+	width: 100%;
+	min-width: 100%;
+	max-width: 100%;
+	min-height: 380px;
+	resize: vertical;
+	border: 1.5px solid #d3d7e3;
+	border-radius: 8px;
+	font-size: 1.18rem;
+	padding: 18px 18px;
+	font-family: inherit;
+	background: #fafdff;
+	color: #222;
+	outline: none;
+	transition: border 0.2s, box-shadow 0.2s;
+	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.03);
+	box-sizing: border-box;
+}
+header {
+	width: 100vw;
+	background: linear-gradient(90deg, #7a8cff 0%, #b6c7ff 100%);
+	padding: 0 0 16px 0;
+	margin-bottom: 0;
+	box-shadow: 0 2px 16px 0 rgba(122,140,255,0.08);
+}
+
+header h1 {
+	margin: 0 auto;
+	padding: 18px 0 6px 0;
+	font-size: 1.7rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	color: #fff;
+	text-align: center;
+	text-shadow: 0 2px 8px rgba(80,90,180,0.13);
+	font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+.editor textarea:focus {
+	border: 1.5px solid #7a8cff;
+	box-shadow: 0 2px 8px 0 rgba(122,140,255,0.08);
+	background: #f5f7ff;
+}
