@@ -1,17 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
-import useMoodDetector from './useMoodDetector'
 
-export default function Editor(){
+export default function Editor({ mood }: { mood: string }) {
   const ref = useRef<HTMLTextAreaElement | null>(null)
   const [value, setValue] = useState('')
-  const mood = useMoodDetector()
 
-  useEffect(()=>{
+  useEffect(() => {
     const ta = ref.current
-    if(!ta) return
-    const onInput = (e: Event)=> setValue((e.target as HTMLTextAreaElement).value)
+    if (!ta) return
+    const onInput = (e: Event) => setValue((e.target as HTMLTextAreaElement).value)
     ta.addEventListener('input', onInput)
-    return ()=> ta.removeEventListener('input', onInput)
+    return () => ta.removeEventListener('input', onInput)
   }, [])
 
   return (
