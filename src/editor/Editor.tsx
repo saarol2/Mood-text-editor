@@ -1,21 +1,31 @@
+
 import React, { useEffect, useRef, useState } from 'react'
+// ...existing code...
 
-export default function Editor({ mood }: { mood: string }) {
+interface EditorProps {
+  mood: string
+  value: string
+  setValue: (v: string) => void
+}
+
+export default function Editor({ mood, value, setValue }: EditorProps) {
   const ref = useRef<HTMLTextAreaElement | null>(null)
-  const [value, setValue] = useState('')
 
+  // Keep textarea in sync with value
   useEffect(() => {
-    const ta = ref.current
-    if (!ta) return
-    const onInput = (e: Event) => setValue((e.target as HTMLTextAreaElement).value)
-    ta.addEventListener('input', onInput)
-    return () => ta.removeEventListener('input', onInput)
-  }, [])
+    if (ref.current && ref.current.value !== value) {
+      ref.current.value = value
+    }
+  }, [value])
 
   return (
     <div className={`editor mood-${mood}`}>
-      <div className="controls">Mood: <strong>{mood}</strong></div>
-      <textarea ref={ref} placeholder="Kirjoita..." />
+      <textarea
+        ref={ref}
+        placeholder="Kirjoita..."
+        value={value}
+        onChange={e => setValue(e.target.value)}
+      />
     </div>
   )
 }

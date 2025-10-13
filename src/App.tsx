@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
 import Editor from './editor/Editor'
+import HeaderActions from './editor/HeaderActions'
 import useMoodDetector, { Mood } from './editor/useMoodDetector'
 
 
@@ -50,32 +51,49 @@ export default function App() {
     }
   }, [mood])
 
+  // Editor value state and handlers
+  const [editorValue, setEditorValue] = useState('')
+
+  // Handle file upload
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    const reader = new FileReader()
+    reader.onload = (ev) => {
+      setEditorValue(ev.target?.result as string || '')
+    }
+    reader.readAsText(file)
+    e.target.value = ''
+  }
+
+  // Handle download
+  const handleDownload = () => {
+    const blob = new Blob([editorValue], { type: 'text/plain' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = 'mood-editor.txt'
+    document.body.appendChild(a)
+    a.click()
+    setTimeout(() => {
+      document.body.removeChild(a)
+      URL.revokeObjectURL(url)
+    }, 0)
+  }
+
   return (
     <div className="app">
-      <header>
-        <h1>Mood Text Editor</h1>
-        <div style={{ marginTop: 12 }}>
-          <label htmlFor="mood-select" style={{ fontWeight: 500, marginRight: 8 }}>Test mood:</label>
-          <select
-            id="mood-select"
-            value={manualMood}
-            onChange={e => setManualMood(e.target.value as Mood | 'auto')}
-            style={{ fontSize: '1rem', padding: '2px 8px', borderRadius: 4 }}
-          >
-            <option value="auto">Auto (typing-based)</option>
-            <option value="calm">Calm</option>
-            <option value="focused">Focused</option>
-            <option value="frustrated">Frustrated</option>
-            <option value="uncertain">Uncertain</option>
-            <option value="stressed">Stressed</option>
-          </select>
-          <span style={{ marginLeft: 10, fontSize: '0.95em', color: '#aaa' }}>
-            {manualMood === 'auto' ? 'Automatic mood detection' : 'Manual override'}
-          </span>
-        </div>
+      <header style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 8, marginBottom: 24 }}>
+        <h1 style={{ margin: 0 }}>Mood Text Editor</h1>
+        <HeaderActions
+          onUpload={handleFileUpload}
+          onDownload={handleDownload}
+          manualMood={manualMood}
+          setManualMood={m => setManualMood(m as Mood | 'auto')}
+        />
       </header>
       <main>
-        <Editor mood={mood} />
+        <Editor mood={mood} value={editorValue} setValue={setEditorValue} />
       </main>
     </div>
   )
