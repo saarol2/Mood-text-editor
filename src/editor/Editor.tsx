@@ -19,7 +19,7 @@ export default function Editor({ mood, value, setValue }: EditorProps) {
   }, [value])
 
   return (
-    <div className={`editor mood-${mood}`}>
+  <div className={`editor mood-${mood}`}>
       <div style={{ marginBottom: 8, fontSize: '1.05em', color: '#e6eaf3' }}>
         Mood: <strong>{mood}</strong>
       </div>

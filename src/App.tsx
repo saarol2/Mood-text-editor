@@ -23,8 +23,8 @@ export default function App() {
       document.body.classList.remove('mood-calm-bg')
       document.body.classList.remove('mood-focused-bg')
   document.body.classList.remove('mood-reflective-bg')
-    } else if (mood === 'uncertain') {
-        document.body.classList.add('mood-reflective-bg')
+    } else if (mood === 'reflective') {
+      document.body.classList.add('mood-reflective-bg')
       document.body.classList.remove('mood-calm-bg')
       document.body.classList.remove('mood-focused-bg')
       document.body.classList.remove('mood-frustrated-bg')
