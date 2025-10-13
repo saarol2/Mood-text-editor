@@ -95,17 +95,17 @@
 	100% { transform: translate(0, 0) rotate(0deg); }
 }
 
-/* UNCERTAIN MOOD: blue background, swaying editor */
-.mood-uncertain-bg {
+/* REFLECTIVE MOOD: blue background, swaying editor */
+.mood-reflective-bg {
 	background: #4a90e2 !important;
 	transition: background 0.7s;
 }
 
-.mood-uncertain {
-	animation: uncertain-sway 3.2s ease-in-out infinite;
+.mood-reflective {
+	animation: reflective-sway 3.2s ease-in-out infinite;
 }
 
-@keyframes uncertain-sway {
+@keyframes reflective-sway {
 	0% { transform: translateX(-15px) rotate(-0.5deg); }
 	50% { transform: translateX(15px) rotate(0.5deg); }
 	100% { transform: translateX(-15px) rotate(-0.5deg); }

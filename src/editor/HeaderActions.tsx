@@ -14,7 +14,7 @@ const moodOptions = [
   { value: 'calm', label: 'Calm' },
   { value: 'focused', label: 'Focused' },
   { value: 'frustrated', label: 'Frustrated' },
-  { value: 'uncertain', label: 'Uncertain' },
+  { value: 'reflective', label: 'Reflective' },
   { value: 'stressed', label: 'Stressed' },
 ]
 

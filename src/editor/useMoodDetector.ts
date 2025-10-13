@@ -1,7 +1,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-export type Mood = 'calm' | 'focused' | 'frustrated' | 'uncertain' | 'stressed'
+export type Mood = 'calm' | 'focused' | 'frustrated' | 'reflective' | 'stressed'
 
 function now() { return performance.now() }
 
@@ -43,9 +43,9 @@ export default function useMoodDetector(): Mood {
       let next: Mood = 'calm'
 
 
-      // Uncertain: moderately long pause or very choppy typing rhythm
+  // Reflective: moderately long pause or very choppy typing rhythm
       if (idle > 3500 || avgGap > 1200) {
-        next = 'uncertain'
+  next = 'reflective'
       }
       // Stressed: very high typing speed, some errors
       else if (wpm > 120 && backRatio > 0.08 && backRatio < 0.25) {

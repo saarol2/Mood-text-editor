@@ -22,9 +22,9 @@ export default function App() {
       document.body.classList.add('mood-frustrated-bg')
       document.body.classList.remove('mood-calm-bg')
       document.body.classList.remove('mood-focused-bg')
-      document.body.classList.remove('mood-uncertain-bg')
+  document.body.classList.remove('mood-reflective-bg')
     } else if (mood === 'uncertain') {
-      document.body.classList.add('mood-uncertain-bg')
+        document.body.classList.add('mood-reflective-bg')
       document.body.classList.remove('mood-calm-bg')
       document.body.classList.remove('mood-focused-bg')
       document.body.classList.remove('mood-frustrated-bg')
@@ -34,19 +34,19 @@ export default function App() {
       document.body.classList.remove('mood-calm-bg')
       document.body.classList.remove('mood-focused-bg')
       document.body.classList.remove('mood-frustrated-bg')
-      document.body.classList.remove('mood-uncertain-bg')
+  document.body.classList.remove('mood-reflective-bg')
     } else {
       document.body.classList.remove('mood-calm-bg')
       document.body.classList.remove('mood-focused-bg')
       document.body.classList.remove('mood-frustrated-bg')
-      document.body.classList.remove('mood-uncertain-bg')
+        document.body.classList.remove('mood-reflective-bg')
       document.body.classList.remove('mood-stressed-bg')
     }
     return () => {
       document.body.classList.remove('mood-calm-bg')
       document.body.classList.remove('mood-focused-bg')
       document.body.classList.remove('mood-frustrated-bg')
-      document.body.classList.remove('mood-uncertain-bg')
+        document.body.classList.remove('mood-reflective-bg')
       document.body.classList.remove('mood-stressed-bg')
     }
   }, [mood])
@@ -83,8 +83,10 @@ export default function App() {
 
   return (
     <div className="app">
-      <header style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 8, marginBottom: 24 }}>
-        <h1 style={{ margin: 0 }}>Mood Text Editor</h1>
+      <header style={{ display: 'flex', flexDirection: 'column', alignItems: 'stretch', gap: 8, marginBottom: 24 }}>
+        <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+          <h1 style={{ margin: 0, textAlign: 'center' }}>Mood Text Editor</h1>
+        </div>
         <HeaderActions
           onUpload={handleFileUpload}
           onDownload={handleDownload}
