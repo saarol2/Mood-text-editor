@@ -48,7 +48,7 @@ export default function useMoodDetector(): Mood {
   next = 'reflective'
       }
       // Stressed: very high typing speed, some errors
-      else if (wpm > 120 && backRatio > 0.08 && backRatio < 0.25) {
+      else if (wpm > 110 && backRatio > 0.08 && backRatio < 0.25) {
         next = 'stressed'
       }
       // Focused: fast, few errors
@@ -64,8 +64,8 @@ export default function useMoodDetector(): Mood {
         next = 'calm'
       }
 
-      // If completely idle, always calm
-      if (idle > 4000) next = 'calm'
+      // If completely idle, reflective
+      if (idle > 5000) next = 'reflective'
 
       setMood(next)
     }, 800)
