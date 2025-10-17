@@ -15,10 +15,10 @@
 	top: 0; left: 0; right: 0; bottom: 0;
 	pointer-events: none;
 	background:
-		radial-gradient(ellipse 80vw 12vh at 50% 0%, #60d2ff 60%, transparent 100%), /* top edge */
+		radial-gradient(ellipse 80vw 16vh at 50% 0%, #60d2ff 60%, transparent 100%), /* top edge */
 		radial-gradient(ellipse 80vw 12vh at 50% 100%, #60d2ff 60%, transparent 100%), /* bottom edge */
-		radial-gradient(ellipse 6vw 80vh at 0% 50%, #60d2ff 60%, transparent 100%), /* left edge */
-		radial-gradient(ellipse 6vw 80vh at 100% 50%, #60d2ff 60%, transparent 100%); /* right edge */
+		radial-gradient(ellipse 10vw 80vh at -2% 50%, #60d2ff 60%, transparent 100%), /* left edge */
+		radial-gradient(ellipse 10vw 80vh at 102% 50%, #60d2ff 60%, transparent 100%); /* right edge */
 	opacity: 0.85;
 	filter: blur(0.7vw);
 	animation: calm-edges-breath 1.7s ease-in-out infinite;
@@ -112,11 +112,46 @@
 .mood-reflective-bg {
 	background: #4a90e2 !important;
 	transition: background 0.7s;
+	position: relative;
+	z-index: 0;
 }
 
-.mood-reflective {
-	animation: reflective-sway 3.2s ease-in-out infinite;
-}
+
+	.mood-reflective-bg::before {
+		content: '';
+		position: fixed;
+		z-index: -1;
+		top: 0; left: 0; right: 0; bottom: 0;
+		pointer-events: none;
+		background:
+			radial-gradient(ellipse 80vw 12vh at 50% 0%, #2c3e70 60%, transparent 100%), /* top edge */
+			radial-gradient(ellipse 80vw 12vh at 50% 100%, #2c3e70 60%, transparent 100%), /* bottom edge */
+			radial-gradient(ellipse 28vw 80vh at -6% 50%, #2c3e70 60%, transparent 100%), /* left edge */
+			radial-gradient(ellipse 28vw 80vh at 106% 50%, #2c3e70 60%, transparent 100%), /* right edge */
+			linear-gradient(120deg, transparent 0%, #7fc7ff 30%, #4a90e2 50%, #7fc7ff 70%, transparent 100%);
+		opacity: 0.85;
+		filter: blur(1vw);
+		animation: reflective-shimmer 4.2s ease-in-out infinite;
+		transition: opacity 0.3s, filter 0.3s;
+	}
+
+	@keyframes reflective-shimmer {
+		0% {
+			opacity: 0.8;
+			filter: blur(1vw);
+			background-position: 0 0, 0 0, 0 0, 0 0, 0% 0%;
+		}
+		50% {
+			opacity: 1;
+			filter: blur(2vw);
+			background-position: 0 0, 0 0, 0 0, 0 0, 100% 0%;
+		}
+		100% {
+			opacity: 0.8;
+			filter: blur(1vw);
+			background-position: 0 0, 0 0, 0 0, 0 0, 0% 0%;
+		}
+	}
 
 @keyframes reflective-sway {
 	0% { transform: translateX(-15px) rotate(-0.5deg); }
