@@ -47,17 +47,17 @@ export default function useMoodDetector(): Mood {
       if (idle > 3500 || avgGap > 1200) {
   next = 'reflective'
       }
-      // Stressed: very high typing speed, some errors
-      else if (wpm > 110 && backRatio > 0.08 && backRatio < 0.25) {
+      // Frustrated: lots of backspaces, but not after just a couple of mistakes
+      else if ((backRatio > 0.30 && keystrokes > 15) || backspaces > 7) {
+        next = 'frustrated'
+      }
+      // Stressed: high typing speed with some errors, or very fast with more errors
+      else if ((wpm > 90 && backRatio > 0.08 && backRatio < 0.30) || (wpm > 100 && backRatio > 0.05)) {
         next = 'stressed'
       }
       // Focused: fast, few errors
       else if (wpm > 60 && backRatio < 0.08) {
         next = 'focused'
-      }
-      // Frustrated: lots of backspaces, but not after just a couple of mistakes
-      else if ((backRatio > 0.28 && keystrokes > 15) || backspaces > 7) {
-        next = 'frustrated'
       }
       // Calm: slow pace, few errors
       else if (wpm > 0 && wpm <= 60 && backRatio < 0.12) {
